@@ -69,10 +69,16 @@ function simulateKey(key) {
 }
 
 function postLaTex() {
+    if (typeof latexString === 'function') {
+        return latexString(mathField.latex());
+    }
     latexString.postMessage(mathField.latex());
 }
 
 function postClearable() {
+    if (typeof clearable === 'function') {
+        return clearable(isClearable);
+    }
     clearable.postMessage(isClearable.toString());
 }
 </script>
